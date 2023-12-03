@@ -109,6 +109,15 @@ class Brick(GameObject):
 class Game(tk.Frame):
     def __init__(self, master):
         super(Game, self).__init__(master)
+        self.lives = 3
+        self.width = 900
+        self.height = 600
+        self.canvas = tk.Canvas(self, bg= 'black',
+                                width=self.width,
+                                height=self.height,)
+        
+        self.canvas.pack()
+        self.pack()
         self.items = {}
         self.ball = None
         self.paddle = Paddle(self.canvas, self.width/2, 400)
@@ -191,7 +200,6 @@ class Game(tk.Frame):
 if __name__ == '__main__':
     root = tk.Tk()
     root.title('Breaker of Bricks')
-    root.geometry("900x600")
 # Load background PNG into a TK image (Needs PIL)
     image = Image.open(f"background.png")
     imageTk = ImageTk.PhotoImage(image)
